@@ -9,6 +9,9 @@ import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import "./CartDetailspage.css";
 
+import { URL } from "../App";
+
+
 export default function CartDetailsPage() {
   const [mm, setMM] = useState(productData6);
   const params = useParams();
@@ -72,7 +75,7 @@ export default function CartDetailsPage() {
     localStorage.setItem("amount", amount); // Set the 'amount' in localStorage\
     try {
       if (phone.length === 10) {
-        var data1 = await fetch("http://localhost:5000/Order", {
+        var data1 = await fetch(`${URL}/Order`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ amount }),
@@ -84,7 +87,7 @@ export default function CartDetailsPage() {
         }
         // const orderid=responseData.order.id;
 
-        var keys = await fetch("http://localhost:5000/key", {
+        var keys = await fetch(`${URL}/key`, {
           method: "GET",
         });
         keys = await keys.json();
@@ -108,7 +111,7 @@ export default function CartDetailsPage() {
           description: "Test Transaction",
           // image: "https://example.com/your_logo",
           order_id: data1.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-          callback_url: "http://localhost:5000/verification",
+          callback_url: `${URL}/verification`,
           handler: function (response) {
             // Handle the payment success callback here
             console.log("Payment successful: ", response);
@@ -162,7 +165,7 @@ export default function CartDetailsPage() {
 
       // Send a request to your server to save data to the databases
       const response = await fetch(
-        "http://localhost:5000/saveDataToDatabase1",
+        `${URL}/saveDataToDatabase1`,
         {
           method: "POST",
           headers: {
