@@ -24,7 +24,7 @@ import Panel from './components/Panel.js';
 import Allprice from './components/Allprice.js';
 // import Panel1 from "./components/Panel.js";
 
-export const URL = process.env.REACT_APP_SERVER;
+export const URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
   return (
