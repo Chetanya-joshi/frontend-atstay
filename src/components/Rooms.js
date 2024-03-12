@@ -22,6 +22,9 @@ import "./room.css";
 
 import Footer from "./Footer.js";
 import { useLocation } from "react-router-dom";
+
+import { URL } from "../App";
+
 // import ExampleCarouselImage from 'components/ExampleCarouselImage';
 
 // import React from 'https://cdn.skypack.dev/react@17.0.1';
@@ -137,7 +140,7 @@ function Rooms() {
   const fetchDataFromServer = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/rooms/${params.id}`
+        `${URL}/api/rooms/${params.id}`
       );
       const data = await response.json();
       console.log(data);
