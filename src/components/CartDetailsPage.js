@@ -8,9 +8,7 @@ import Footer from "./Footer";
 
 import { useNavigate } from "react-router-dom";
 import "./CartDetailspage.css";
-
 import { URL } from "../App";
-
 
 export default function CartDetailsPage() {
   const [mm, setMM] = useState(productData6);
