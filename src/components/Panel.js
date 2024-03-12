@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import {productData} from './Atstaysdata';
 import './Panel.css';
+import { URL } from "../App";
+
 
 const Panel = () => {
     const params = useParams();
@@ -32,7 +34,7 @@ const Panel = () => {
 
     const fetchDataFromServer = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/rooms/${params.id}`);
+            const response = await fetch(`${URL}/api/rooms/${params.id}`);
             const data = await response.json();
             setRooms(data.rooms || 2);
             setRoomprice(data.roomprice || '');
@@ -50,7 +52,7 @@ const Panel = () => {
 
     const saveDescription = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/rooms1/${params.id}`, {
+            const response = await fetch(`${URL}/api/rooms1/${params.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
