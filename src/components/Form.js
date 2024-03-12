@@ -4,6 +4,9 @@ import Footer from './Footer';
 import Navbar from './Navbar';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { URL } from "../App";
+
 function Form(){
     const [name,setname]= useState('')
     const [mail,setmail]= useState('')
@@ -29,13 +32,13 @@ const navigate = useNavigate()
         localStorage.setItem('amount', amount); // Set the 'amount' in localStorage\
     try{
       if(phone.length === 10){
-      var data1 = await fetch("http://localhost:5000/Order",{
+      var data1 = await fetch(`${URL}/Order`,{
         method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({amount})
       })
      
-      var keys= await fetch("http://localhost:5000/key",{
+      var keys= await fetch(`${URL}/key`,{
         method: 'GET',
     
       })
@@ -63,7 +66,7 @@ const navigate = useNavigate()
         description: "Test Transaction",
         // image: "https://example.com/your_logo",
         order_id: data1.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        callback_url: "http://localhost:5000/verification",
+        callback_url: `${URL}/verification`,
         handler: function (response) {
           // Handle the payment success callback here
           console.log("Payment successful: ", response);
@@ -120,7 +123,7 @@ const navigate = useNavigate()
           const paisa = localStorage.getItem('amount')
     
           // Send a request to your server to save data to the database
-          const response = await fetch("http://localhost:5000/saveDataToDatabase", {
+          const response = await fetch(`${URL}/saveDataToDatabase`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
