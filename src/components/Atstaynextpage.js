@@ -9,7 +9,7 @@ import img1 from "../images/Attours1.webp";
 import { Button } from "bootstrap";
 import { productData } from "./Atstaysdata";
 // import dd from './dd.json';
-
+import { URL } from "../App";
 import { useParams } from "react-router-dom";
 
 import moment from "moment";
@@ -136,7 +136,7 @@ function Atstaynextpage() {
   const fetchDataFromServer = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/rooms/${params.id}`
+        `${URL}/api/rooms/${params.id}`
       );
       const data = await response.json();
       console.log(data, "mmm");
