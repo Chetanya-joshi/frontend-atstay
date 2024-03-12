@@ -2,6 +2,7 @@ import React, {useState , useEffect} from 'react';
 import { productData } from './Atstaysdata';
 import { useParams } from 'react-router-dom';
 import './Allprice.css';
+import { URL } from '../App';
 
 export default function Allprice() {
 
@@ -26,7 +27,7 @@ export default function Allprice() {
     }, []);
     const fetchAllRooms = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/rooms/all');
+        const response = await fetch(`${URL}/api/rooms/all`);
         const data = await response.json();
   
         console.log('Fetched data:', data); // Log the fetched data
@@ -52,7 +53,7 @@ export default function Allprice() {
   const handleDelete = async (roomId) => {
     try {
       // Send a DELETE request to the server to delete the room
-      await fetch(`http://localhost:5000/api/rooms/${roomId}`, {
+      await fetch(`${URL}/api/rooms/${roomId}`, {
         method: 'DELETE',
       });
 
@@ -68,7 +69,7 @@ export default function Allprice() {
   const handleUpdate = async (roomId , index) => {
     try {
       // Send a PUT request to update the room data
-      await fetch(`http://localhost:5000/api/rooms/${roomId}`, {
+      await fetch(`${URL}/api/rooms/${roomId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
